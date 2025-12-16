@@ -4,36 +4,35 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TV Show Project | Georgina Rogers (zilinskyte)</title>
-    <link href="style.css" rel="stylesheet" />
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
-    <h1>All episodes</h1>
+    <h1>TV Shows</h1>
 
-    <!-- Level 200 -->
+    <!-- Show selector -->
+    <select id="showSelect">
+      <option value="">Loading shows...</option>
+    </select>
+
+    <!-- Search -->
     <input
       type="search"
       id="searchInput"
       placeholder="Search episodes..."
     />
 
+    <!-- Episode selector -->
     <select id="episodeSelect">
       <option value="">Jump to an episode...</option>
     </select>
 
-    <p id="episodeCount"></p>
-
-    <!-- NEW: loading / error message -->
-    <p id="statusMessage">Loading episodes…</p>
-
-    <p>
-      Episode data originally from
-      <a href="http://www.tvmaze.com/shows/44933/severance/episodes">TVmaze</a>
-    </p>
+    <!-- Status / count -->
+    <p id="statusMessage">Loading episodes...</p>
 
     <div id="episodes" class="grid-container"></div>
 
+    <!-- IMPORTANT: episodes.js is DELETED -->
     <script src="script.js"></script>
   </body>
 </html>
