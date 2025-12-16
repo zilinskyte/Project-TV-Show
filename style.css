@@ -34,9 +34,15 @@ body {
   text-decoration: underline;
 }
 
-/* Small addition */
+/* Existing controls */
 #searchInput,
 #episodeSelect {
   margin: 10px;
   padding: 5px;
+}
+
+/* NEW: loading / error message */
+#statusMessage {
+  margin: 10px;
+  font-weight: bold;
 }

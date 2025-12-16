@@ -1,10 +1,33 @@
-const episodes = getAllEpisodes();
 const episodesContainer = document.getElementById("episodes");
 const searchInput = document.getElementById("searchInput");
 const episodeSelect = document.getElementById("episodeSelect");
 const episodeCount = document.getElementById("episodeCount");
+const statusMessage = document.getElementById("statusMessage");
 
-// Original loop moved into a function (minimal refactor)
+let episodes = [];
+
+/* ---------- FETCH (LEVEL 300) ---------- */
+
+fetch("https://api.tvmaze.com/shows/82/episodes")
+  .then(function (response) {
+    if (!response.ok) {
+      throw new Error("Failed to fetch episodes");
+    }
+    return response.json();
+  })
+  .then(function (data) {
+    episodes = data;
+    statusMessage.textContent = "";
+    displayEpisodes(episodes);
+    populateEpisodeSelect(episodes);
+  })
+  .catch(function () {
+    statusMessage.textContent =
+      "Sorry, episodes could not be loaded. Please try again later.";
+  });
+
+/* ---------- DISPLAY ---------- */
+
 function displayEpisodes(episodeList) {
   episodesContainer.innerHTML = "";
 
@@ -16,7 +39,6 @@ function displayEpisodes(episodeList) {
     const number = episode.number.toString().padStart(2, "0");
     const code = `S${season}E${number}`;
 
-    // Original innerHTML preserved
     card.innerHTML = `
       <h2 class="episode-name">${episode.name} - ${code}</h2>
 
@@ -48,10 +70,7 @@ function displayEpisodes(episodeList) {
   episodeCount.textContent = `Showing ${episodeList.length} episodes`;
 }
 
-// Initial render (same behaviour as before)
-displayEpisodes(episodes);
-
-/* ---------- LEVEL 200 ADDITIONS ---------- */
+/* ---------- LEVEL 200 FEATURES (UNCHANGED) ---------- */
 
 // Live search
 searchInput.addEventListener("input", function () {
@@ -68,20 +87,22 @@ searchInput.addEventListener("input", function () {
 });
 
 // Populate episode selector
-episodes.forEach(function (episode) {
-  const option = document.createElement("option");
+function populateEpisodeSelect(episodeList) {
+  episodeList.forEach(function (episode) {
+    const option = document.createElement("option");
 
-  const season = episode.season.toString().padStart(2, "0");
-  const number = episode.number.toString().padStart(2, "0");
-  const code = `S${season}E${number}`;
+    const season = episode.season.toString().padStart(2, "0");
+    const number = episode.number.toString().padStart(2, "0");
+    const code = `S${season}E${number}`;
 
-  option.value = episode.id;
-  option.textContent = `${code} - ${episode.name}`;
+    option.value = episode.id;
+    option.textContent = `${code} - ${episode.name}`;
 
-  episodeSelect.appendChild(option);
-});
+    episodeSelect.appendChild(option);
+  });
+}
 
-// Selector behaviour (bonus: show only selected episode)
+// Selector behaviour
 episodeSelect.addEventListener("change", function () {
   const selectedId = episodeSelect.value;
 
