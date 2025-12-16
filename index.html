@@ -9,18 +9,30 @@
   </head>
 
   <body>
-    <h1> All episodes</h1>
+    <h1>All episodes</h1>
+
+    <!-- Added for Level 200 -->
+    <input
+      type="search"
+      id="searchInput"
+      placeholder="Search episodes..."
+    />
+
+    <select id="episodeSelect">
+      <option value="">Jump to an episode...</option>
+    </select>
+
+    <p id="episodeCount"></p>
 
     <p>
       Episode data originally from
       <a href="http://www.tvmaze.com/shows/44933/severance/episodes">TVmaze</a>
     </p>
-    <div id="episodes"></div>
 
-    <!-- Loads a provided function called getAllEpisodes() which returns all episodes -->
+    <!-- Added class only -->
+    <div id="episodes" class="grid-container"></div>
+
     <script src="episodes.js"></script>
-
-    <!-- Loads YOUR javascript code -->
     <script src="script.js"></script>
   </body>
 </html>
