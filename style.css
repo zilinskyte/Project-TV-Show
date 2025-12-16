@@ -1,48 +1,98 @@
 body {
   font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f9f9f9;
+  color: #333;
 }
 
-/* Existing layout */
+h1 {
+  text-align: center;
+  margin: 20px 0;
+}
+
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
   padding: 20px;
 }
 
-/* Existing card styles */
-.episode-box {
+.show-box, .episode-box {
   border: 1px solid #ddd;
-  padding: 10px;
+  border-radius: 8px;
+  padding: 15px;
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
-.episode-name {
-  font-weight: bold;
-}
-
-.episode-image {
+.show-box img, .episode-box img {
   max-width: 100%;
   height: auto;
+  display: block;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  flex-shrink: 0;
 }
 
-.episode-summary {
-  margin-top: 10px;
+.episode-box {
+  min-height: 500px; 
 }
 
-.episode-link {
-  color: blue;
-  text-decoration: underline;
+.episode-box h2, .show-box h2 {
+  font-size: 1.1em;
+  margin: 0 0 10px 0;
+  flex-shrink: 0;
 }
 
-/* Existing controls */
-#searchInput,
-#episodeSelect {
-  margin: 10px;
-  padding: 5px;
+.episode-box p, .show-box p {
+  margin: 5px 0;
+  line-height: 1.4;
+  flex-grow: 1;
 }
 
-/* NEW: loading / error message */
+.read-more {
+  cursor: pointer;
+  background: #d00505;
+  color: #fff;
+  border: none;
+  padding: 8px;
+  border-radius: 5px;
+  max-width: 150px;
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+
+.read-more:hover {
+  background: #a00404;
+}
+
+#searchInput, #episodeSelect, #showSearchInput, #backToShows {
+  display: block;
+  margin: 10px auto;
+  padding: 8px;
+  font-size: 1em;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+#backToShows {
+  cursor: pointer;
+  background: #d00505;
+  color: #fff;
+  border: none;
+  max-width: 200px;
+}
+
+#backToShows:hover {
+  background: #a00404;
+}
+
 #statusMessage {
-  margin: 10px;
+  text-align: center;
   font-weight: bold;
+  margin: 10px 0;
 }
