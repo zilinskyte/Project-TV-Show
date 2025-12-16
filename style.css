@@ -1,3 +1,42 @@
-#root {
-  color: red;
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* Existing layout */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Existing card styles */
+.episode-box {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.episode-name {
+  font-weight: bold;
+}
+
+.episode-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.episode-summary {
+  margin-top: 10px;
+}
+
+.episode-link {
+  color: blue;
+  text-decoration: underline;
+}
+
+/* Small addition */
+#searchInput,
+#episodeSelect {
+  margin: 10px;
+  padding: 5px;
 }
